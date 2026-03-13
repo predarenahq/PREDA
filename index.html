@@ -7,18 +7,24 @@
   <meta name="description" content="The arena where crypto tribes compete. Predict coin battles. Build parlays. Make history on Solana."/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;500;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;600;500;400&family=Bebas+Neue&display=swap" rel="stylesheet">
   <style>
     :root {
       --black: #000000;
-      --surface: #16131a;
+      --dark-bg: #0f1419;
+      --surface: #1a2332;
       --gold: #FFD700;
       --purple: #8B5CF6;
-      --gray: #C3C3C333;
+      --cyan: #00D4FF;
+      --red: #FF1744;
+      --green: #00FF00;
+      --yellow: #FFFF00;
+      --blue: #0066FF;
       --font-main: 'Montserrat', Arial, sans-serif;
-      --radius: 18px;
+      --font-display: 'Bebas Neue', Arial, sans-serif;
       --transition: 0.23s cubic-bezier(.77,0,.18,1);
     }
+
     html, body {
       background: var(--black);
       color: #fff;
@@ -27,509 +33,964 @@
       font-family: var(--font-main);
       font-size: 16px;
       scroll-behavior: smooth;
+      line-height: 1.6;
     }
+
     * {
       box-sizing: border-box;
     }
+
     a {
       color: inherit;
       text-decoration: none;
     }
-    section {
+
+    /* --- HEADER --- */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 40px;
+      background: var(--black);
+      border-bottom: 2px solid #333;
+      flex-wrap: wrap;
+      gap: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .logo {
+      width: 70px;
+      height: 90px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 50px rgba(0, 255, 0, 0.2)) drop-shadow(0 0 70px rgba(0, 102, 255, 0.2));
+      animation: logoPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes logoPulse {
+      0%, 100% { filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 50px rgba(0, 255, 0, 0.2)) drop-shadow(0 0 70px rgba(0, 102, 255, 0.2)); }
+      50% { filter: drop-shadow(0 0 50px rgba(255, 215, 0, 0.6)) drop-shadow(0 0 70px rgba(0, 255, 0, 0.4)) drop-shadow(0 0 90px rgba(0, 102, 255, 0.4)); }
+    }
+
+    .logo img {
       width: 100%;
-      padding: 56px 18px;
-      max-width: 1080px;
-      margin: 0 auto;
+      height: 100%;
+      object-fit: contain;
     }
 
-    /* --- HERO --- */
-    .hero {
-      padding: 80px 18px 40px 18px;
-      text-align: center;
-      min-height: 70vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #151029 60%, #16131a 100%);
-    }
-    .logo-text {
-      font-size: 2.7rem;
+    .tagline-header {
+      font-size: 12px;
       font-weight: 700;
-      letter-spacing: 4px;
-      background: linear-gradient(90deg, var(--gold), var(--purple) 70%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 18px;
-      text-shadow: 0 2px 18px #0008;
+      color: #fff;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+      letter-spacing: 1.5px;
+      line-height: 1.2;
+      max-width: 180px;
     }
-    .tagline {
-      font-size: 1.45rem;
-      font-weight: 500;
-      color: var(--gold);
-      margin-bottom: 15px;
-      letter-spacing: 1px;
-      text-shadow: 0 2px 10px #000a;
-    }
-    .subtext {
-      font-size: 1.07rem;
-      opacity: 0.85;
-      margin-bottom: 32px;
-      color: #eee;
-      max-width: 30em;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .cta-btn {
-      background: linear-gradient(90deg, var(--gold) 60%, var(--purple) 130%);
-      color: #111;
-      font-size: 1.18rem;
-      padding: 15px 41px;
+
+    .request-access-btn {
+      background: #fff;
+      color: #000;
+      padding: 14px 40px;
+      border-radius: 50px;
       border: none;
-      border-radius: 32px;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-top: 1em;
-      cursor: pointer;
-      box-shadow: 0px 2px 32px #FFD70020;
-      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
-      will-change: transform;
-      outline: none;
-    }
-    .cta-btn:hover, .cta-btn:focus {
-      background: linear-gradient(90deg, var(--gold) 30%, var(--purple) 100%);
-      transform: scale(1.06) translateY(-2px);
-      box-shadow: 0px 6px 38px #FFD70049;
-      color: #fff;
-    }
-
-    /* --- LIVE MARKETS PREVIEW --- */
-    .markets-preview-title {
-      text-align: center;
-      font-size: 1.45rem;
-      font-weight: 600;
-      color: var(--gold);
-      margin-bottom: 1em;
+      font-size: 14px;
       letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-    .markets-cards {
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-      align-items: center;
-      justify-content: center;
-    }
-    .bet-card {
-      background: var(--surface);
-      border-radius: var(--radius);
-      box-shadow: 0 4px 36px #FFD70009;
-      min-width: 290px;
-      max-width: 340px;
-      padding: 27px 26px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      opacity: 0;
-      transform: translateY(60px);
-      transition: opacity 0.8s var(--transition), transform 0.7s var(--transition);
-      border: 1.5px solid #5433b6cc;
-    }
-    .bet-card.animated {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .match {
-      font-size: 1.13rem;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      letter-spacing: .8px;
-      font-weight: 600;
-      text-shadow: 0 2px 10px #0006;
-    }
-    .match-icons {
-      font-size: 2em;
-      margin-right: 6px;
-    }
-    .odds-row {
-      display: flex;
-      gap: 12px;
-      margin-top: 18px;
-      font-family: var(--font-main), Arial, sans-serif;
-    }
-    .odds-option {
-      background: #201e2d;
-      color: #fff;
-      border-radius: 12px;
-      padding: 8px 18px;
-      font-weight: 600;
-      font-size: 1.1rem;
-      display: flex;
-      align-items: center;
-      border: 2px solid #2f2c44;
-      transition: background 0.18s, color 0.18s, transform 0.2s;
-      box-shadow: 0 2px 20px #0009;
-    }
-    .odds-coin {
-      margin-right: 6px;
-      font-size: 1.2em;
-    }
-    .odds-option.gold {
-      border-color: var(--gold);
-      color: var(--gold);
-    }
-    .odds-option.purple {
-      border-color: var(--purple);
-      color: var(--purple);
-    }
-    .odds-option.mid {
-      background: #1a1631;
-      border-color: #8B5CF688;
-      color: var(--purple);
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
     }
 
-    /* --- 3 WAYS TO WIN --- */
-    .ways-section {
-      padding-top: 48px;
-      padding-bottom: 48px;
+    .request-access-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
     }
-    .ways-title {
-      text-transform: uppercase;
+
+    /* --- MATCH DURATION --- */
+    .match-duration {
+      background: #fff;
+      color: #000;
+      padding: 14px 40px;
       text-align: center;
       font-weight: 700;
-      font-size: 1.25rem;
-      color: var(--purple);
-      letter-spacing: 2.5px;
-      margin-bottom: 12px;
-      margin-top: 0;
+      font-size: 13px;
+      letter-spacing: 2px;
+      width: 100%;
+      overflow-x: auto;
     }
-    .ways-cols {
-      display: flex;
-      flex-direction: column;
-      gap: 26px;
-      align-items: stretch;
-      max-width: 900px;
+
+    /* --- MAIN CONTAINER --- */
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 24px;
+      padding: 40px;
+      max-width: 1400px;
       margin: 0 auto;
     }
+
+    /* --- LIVE MARKETS SECTION --- */
+    .live-markets {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 30px;
+      border: 1px solid #2a3f5f;
+    }
+
+    .market-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .market-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .market-subtitle {
+      font-size: 12px;
+      color: #999;
+      margin-top: 4px;
+    }
+
+    .market-tabs {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid #2a3f5f;
+      padding-bottom: 12px;
+    }
+
+    .market-tab {
+      font-size: 13px;
+      color: #999;
+      cursor: pointer;
+      padding: 8px 0;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s;
+      font-weight: 600;
+    }
+
+    .market-tab.active {
+      color: var(--cyan);
+      border-bottom-color: var(--cyan);
+    }
+
+    .market-tab:hover {
+      color: #fff;
+    }
+
+    .tickets-icon {
+      font-size: 20px;
+      color: var(--green);
+    }
+
+    .market-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .market-card {
+      background: #111820;
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid #2a3f5f;
+      position: relative;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .card-match {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .card-coins {
+      display: flex;
+      gap: 8px;
+      font-size: 24px;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .card-time {
+      font-size: 11px;
+      color: #666;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .chart-icon {
+      font-size: 18px;
+      color: #666;
+      cursor: pointer;
+    }
+
+    .odds-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .odds-btn {
+      background: #fff;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      min-width: 80px;
+    }
+
+    .odds-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    }
+
+    .odds-btn.draw {
+      background: #2a3f5f;
+      color: #fff;
+    }
+
+    .odds-btn.alt {
+      background: #8B5CF6;
+      color: #fff;
+    }
+
+    /* --- YOUR TICKETS SIDEBAR --- */
+    .your-tickets {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 24px;
+      border: 1px solid #2a3f5f;
+      height: fit-content;
+      position: sticky;
+      top: 100px;
+    }
+
+    .tickets-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tickets-empty {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .place-ticket-btn {
+      background: var(--green);
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-weight: 700;
+      font-size: 12px;
+      cursor: pointer;
+      width: 100%;
+      letter-spacing: 1px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .place-ticket-btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 12px rgba(0, 255, 0, 0.3);
+    }
+
+    /* --- LIVE TICKER --- */
+    .live-ticker {
+      background: #fff;
+      color: #000;
+      padding: 16px 40px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 1px;
+      width: 100%;
+      margin-bottom: 40px;
+      overflow-x: auto;
+    }
+
+    .ticker-content {
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    /* --- THREE WAYS SECTION --- */
+    .three-ways {
+      padding: 60px 40px;
+      text-align: center;
+    }
+
+    .three-ways-title {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      color: #fff;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(139, 92, 246, 0.2);
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+
+    .three-ways-content {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
     .way-col {
       flex: 1;
-      background: #18131f;
-      border: 1.7px solid #FFD70011;
-      border-radius: var(--radius);
-      padding: 32px 24px 28px 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      min-width: 0;
-      box-shadow: 0 2px 24px #8B5CF610;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: opacity .7s var(--transition), transform .54s var(--transition);
+      min-width: 220px;
+      max-width: 300px;
+      text-align: left;
+      z-index: 2;
     }
-    .way-col.animated {
-      opacity: 1;
-      transform: translateY(0);
+
+    .way-number {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--yellow);
+      text-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
+      margin-bottom: 8px;
     }
-    .way-icon {
-      font-size: 2.3rem;
-      margin-bottom: 13px;
-    }
+
     .way-title {
-      color: var(--gold);
-      font-size: 1.07rem;
+      font-size: 16px;
       font-weight: 700;
+      color: var(--green);
+      text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
       margin-bottom: 8px;
       letter-spacing: 1px;
     }
+
     .way-desc {
-      opacity: 0.84;
-      font-size: 1rem;
-    }
-
-    /* --- FOUNDING PREDATORS --- */
-    .founders-section {
-      margin-top: 34px;
-      padding-bottom: 36px;
-      padding-top: 60px;
-      text-align: center;
-      background: linear-gradient(120deg, #16131a, #241740 86%);
-    }
-    .founders-title {
-      font-size: 1.35rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: var(--gold);
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .founders-subtitle {
-      font-size: 1.09rem;
+      font-size: 13px;
       color: #fff;
-      opacity: 0.8;
-      font-weight: 400;
-      margin-bottom: 18px;
-      letter-spacing: .75px;
+      line-height: 1.6;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
     }
 
-    /* --- WAITLIST FORM --- */
-    .form-section {
-      background: #10101a;
-      padding: 58px 16px 64px 16px;
+    /* --- NEON LOGO CENTER --- */
+    .neon-logo-center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 280px;
+      height: 340px;
+      z-index: 1;
+      opacity: 0.8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .neon-logo-center img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 50px rgba(0, 255, 0, 0.3)) drop-shadow(0 0 100px rgba(0, 102, 255, 0.3));
+    }
+
+    /* --- JOIN WAITLIST SECTION --- */
+    .join-waitlist-section {
+      background: linear-gradient(180deg, #000000 0%, #1a1a2e 100%);
+      padding: 80px 40px;
       text-align: center;
-    }
-    .form-title {
-      font-size: 1.27rem;
-      font-weight: 700;
-      color: var(--gold);
-      margin-bottom: 10px;
-    }
-    form {
-      margin-top: 23px;
-      margin-bottom: 0;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 16px;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
     }
-    input[type="email"] {
-      padding: 13px 16px;
-      border-radius: 6px;
-      border: none;
-      font-size: 1em;
-      background: #232244;
-      color: #fff;
-      width: 92vw;
-      max-width: 350px;
-      transition: border-color 0.2s;
-      border-bottom: 3px solid var(--purple);
+
+    .waitlist-neon-logo {
+      width: 220px;
+      height: 280px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: logoPulse 3s ease-in-out infinite;
     }
-    input[type="email"]:focus {
-      outline: none;
-      border-bottom: 3px solid var(--gold);
+
+    .waitlist-neon-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.5)) drop-shadow(0 0 80px rgba(0, 255, 0, 0.3)) drop-shadow(0 0 100px rgba(0, 102, 255, 0.3));
     }
-    .submit-btn {
-      padding: 11px 36px;
-      font-size: 1.1em;
-      border-radius: 32px;
-      border: none;
-      font-weight: 700;
-      background: linear-gradient(90deg, var(--gold), var(--purple) 95%);
-      color: #18131f;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
+
+    .back-arrow {
+      position: absolute;
+      top: 40px;
+      left: 40px;
+      font-size: 32px;
       cursor: pointer;
-      box-shadow: 0 2px 22px #FFD70039;
-      transition: background var(--transition), color var(--transition), transform var(--transition);
-    }
-    .submit-btn:hover, .submit-btn:focus {
-      background: linear-gradient(90deg, var(--gold) 45%, var(--purple) 96%);
       color: #fff;
-      transform: translateY(-2px) scale(1.04);
-      box-shadow: 0 6px 36px #FFD70049, 0 1.5px 4px var(--purple);
+      transition: transform 0.2s;
     }
-    .form-success {
-      margin-top: 11px;
-      color: var(--gold);
-      font-weight: 600;
+
+    .back-arrow:hover {
+      transform: translateX(-5px);
+    }
+
+    .waitlist-heading {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #fff;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+    }
+
+    .waitlist-subtext {
+      font-size: 16px;
+      color: #ccc;
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .email-label {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 24px;
+      text-align: left;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
+
+    .email-input {
+      width: 100%;
+      max-width: 600px;
+      padding: 18px 24px;
+      border: 2px solid #fff;
+      border-radius: 12px;
+      background: transparent;
+      color: #fff;
+      font-size: 16px;
+      margin-bottom: 24px;
+      font-family: var(--font-main);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .email-input::placeholder {
+      color: #999;
+    }
+
+    .email-input:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    }
+
+    .notify-btn {
+      width: 100%;
+      max-width: 600px;
+      background: #fff;
+      color: #000;
+      border: none;
+      border-radius: 50px;
+      padding: 16px 40px;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .notify-btn:hover {
+      transform: scale(1.04) translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+    }
+
+    .privacy-notice {
+      font-size: 12px;
+      color: #666;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      letter-spacing: 0.5px;
+    }
+
+    .waitlist-neon-stripes {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 400px;
+      height: 200px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      opacity: 0.6;
+    }
+
+    .stripe {
+      width: 60px;
+      height: 150px;
+      background: linear-gradient(45deg, var(--yellow), transparent);
+      border: 3px solid;
+      border-radius: 10px;
+      filter: drop-shadow(0 0 15px rgba(255, 255, 0, 0.4));
+    }
+
+    .stripe.yellow {
+      border-color: var(--yellow);
+    }
+
+    .stripe.blue {
+      border-color: var(--blue);
+      background: linear-gradient(45deg, var(--blue), transparent);
+      filter: drop-shadow(0 0 15px rgba(0, 102, 255, 0.4));
+    }
+
+    /* --- FOOTER --- */
+    .footer {
+      background: var(--black);
+      padding: 40px;
+      text-align: center;
+      border-top: 1px solid #333;
+    }
+
+    .footer-icons {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .footer-icon {
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .footer-icon:hover {
+      transform: scale(1.2);
+    }
+
+    .footer-text {
+      font-size: 12px;
+      color: #666;
       letter-spacing: 1px;
-      opacity: .87;
     }
 
-    /* --- Scroll In Animations --- */
-    .animate-scroll {
-      opacity: 0;
-      transform: translateY(70px) scale(.98);
-      transition: opacity .85s var(--transition), transform .6s var(--transition);
-    }
-    .in-view {
-      opacity: 1 !important;
-      transform: translateY(0) scale(1) !important;
+    /* --- SUCCESS MESSAGE --- */
+    .success-message {
+      color: var(--green);
+      font-weight: 700;
+      margin-top: 16px;
+      font-size: 14px;
+      display: none;
     }
 
-    /* --- Responsive --- */
-    @media (min-width: 600px) {
-      .logo-text {
-        font-size: 3.3rem;
+    /* --- RESPONSIVE --- */
+    @media (max-width: 1024px) {
+      .container {
+        grid-template-columns: 1fr;
+        padding: 24px;
       }
-      .hero {
-        padding: 110px 18px 48px 18px;
+
+      .your-tickets {
+        position: static;
       }
-      .markets-cards {
-        flex-direction: row;
-        gap: 36px;
+
+      header {
+        padding: 16px 24px;
       }
-      .ways-cols {
-        flex-direction: row;
-        gap: 24px;
+
+      .match-duration {
+        padding: 12px 24px;
+        font-size: 11px;
       }
+
+      .live-ticker {
+        padding: 12px 24px;
+        font-size: 10px;
+      }
+
+      .three-ways-title {
+        font-size: 36px;
+      }
+
+      .three-ways-content {
+        gap: 20px;
+      }
+
+      .neon-logo-center {
+        width: 200px;
+        height: 240px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 16px;
+        gap: 12px;
+      }
+
+      .header-left {
+        width: 100%;
+      }
+
+      .request-access-btn {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 13px;
+      }
+
+      .three-ways-title {
+        font-size: 28px;
+        letter-spacing: 2px;
+      }
+
+      .three-ways-content {
+        flex-direction: column;
+        gap: 30px;
+      }
+
       .way-col {
-        padding: 38px 26px;
+        text-align: center;
+        max-width: 100%;
       }
-    }
 
-    @media (min-width: 900px) {
-      .hero {
-        padding: 150px 0 70px 0;
+      .neon-logo-center {
+        display: none;
       }
-      section {
-        padding-left: 0;
-        padding-right: 0;
+
+      .live-markets {
+        padding: 20px;
       }
-      .bet-card {
-        max-width: 370px;
+
+      .market-title {
+        font-size: 18px;
+      }
+
+      .join-waitlist-section {
+        padding: 40px 20px;
+        min-height: auto;
+      }
+
+      .waitlist-heading {
+        font-size: 32px;
+      }
+
+      .waitlist-subtext {
+        font-size: 14px;
+      }
+
+      .email-label {
+        font-size: 18px;
+      }
+
+      .back-arrow {
+        left: 20px;
+        top: 20px;
+        font-size: 24px;
+      }
+
+      .waitlist-neon-stripes {
+        display: none;
+      }
+
+      .waitlist-neon-logo {
+        width: 180px;
+        height: 230px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- HERO SECTION -->
-  <section class="hero" id="home">
-    <div class="logo-text" data-anim="fade">PREDARENA</div>
-    <div class="tagline" data-anim="fade">Parlay Your Conviction. Create The Record.</div>
-    <div class="subtext" data-anim="fade">
-      The arena where crypto tribes compete.<br>
-      Predict coin battles. Build parlays. Make history on Solana.
-    </div>
-    <button class="cta-btn" id="scrollToWaitlist" data-anim="fade">
-      JOIN WAITLIST
-    </button>
-  </section>
 
-  <!-- LIVE MARKETS PREVIEW -->
-  <section>
-    <div class="markets-preview-title animate-scroll">
-      Live Markets Preview
-    </div>
-    <div class="markets-cards">
-      <div class="bet-card" data-anim="betcard">
-        <div class="match">
-          <span class="match-icons">₿</span>
-          Bitcoin
-          <span style="font-size:1.1em;font-weight:400;opacity:.6;margin: 0 7px;">vs</span>
-          <span class="match-icons" style="font-size:1.1em;">Ξ</span>
-          Ethereum
-        </div>
-        <div class="odds-row">
-          <span class="odds-option gold"><span class="odds-coin">₿</span>1.5x</span>
-          <span class="odds-option mid"><span style="font-weight:bold;">DRAW</span> 3.0x</span>
-          <span class="odds-option purple"><span class="odds-coin">Ξ</span>2.3x</span>
-        </div>
+  <!-- HEADER -->
+  <header>
+    <div class="header-left">
+      <div class="logo">
+        <img src="logo.png" alt="PredArena Logo">
       </div>
-      <div class="bet-card" data-anim="betcard" style="transition-delay: .12s;">
-        <div class="match">
-          <span class="match-icons">◎</span>
-          Solana
-          <span style="font-size:1.1em;font-weight:400;opacity:.6;margin: 0 7px;">vs</span>
-          <span class="match-icons" style="font-size:1.1em;">🗻</span>
-          Avalanche
-        </div>
-        <div class="odds-row">
-          <span class="odds-option gold"><span class="odds-coin">◎</span>1.5x</span>
-          <span class="odds-option mid"><span style="font-weight:bold;">DRAW</span> 3.0x</span>
-          <span class="odds-option purple"><span class="odds-coin">🗻</span>2.3x</span>
-        </div>
+      <div class="tagline-header">
+        Parlay Your<br>Conviction.<br>Create The<br>Record.
       </div>
     </div>
-  </section>
+    <button class="request-access-btn" id="scrollToWaitlist">Request Access</button>
+  </header>
+
+  <!-- MATCH DURATION -->
+  <div class="match-duration">
+    MATCH DURATION: [5 MIN] [15 MIN] [1 HOUR] [4 HOUR] [1 DAY] [1 WEEK]
+  </div>
+
+  <!-- MAIN CONTAINER -->
+  <div class="container">
+    <!-- LIVE MARKETS -->
+    <div class="live-markets">
+      <div class="market-header">
+        <div>
+          <div class="market-title">Live Markets</div>
+          <div class="market-subtitle">Predict price performance and win.</div>
+        </div>
+        <div class="tickets-icon">🎫 TICKET SLIP</div>
+      </div>
+
+      <div class="market-tabs">
+        <div class="market-tab active">All</div>
+        <div class="market-tab">Major</div>
+        <div class="market-tab">Altcoins</div>
+        <div class="market-tab">Meme</div>
+      </div>
+
+      <div class="market-cards">
+        <!-- Bitcoin vs Ethereum -->
+        <div class="market-card">
+          <div class="card-header">
+            <div class="card-match">
+              <div class="card-coins">₿ Ξ</div>
+              <div>
+                <div class="card-title">Bitcoin vs Ethereum</div>
+                <div class="card-time">⏱ Ends in 02:34:12</div>
+              </div>
+            </div>
+            <div class="chart-icon">📈</div>
+          </div>
+          <div class="odds-buttons">
+            <button class="odds-btn">BTC<br>1.5x</button>
+            <button class="odds-btn draw">DRAW<br>3.0x</button>
+            <button class="odds-btn alt">ETH<br>2.3x</button>
+          </div>
+        </div>
+
+        <!-- Solana vs Avalanche -->
+        <div class="market-card">
+          <div class="card-header">
+            <div class="card-match">
+              <div class="card-coins">◎ 🗻</div>
+              <div>
+                <div class="card-title">Solana vs Avalanche</div>
+                <div class="card-time">⏱ Ends in 04:15:00</div>
+              </div>
+            </div>
+            <div class="chart-icon">📈</div>
+          </div>
+          <div class="odds-buttons">
+            <button class="odds-btn">SOL<br>1.5x</button>
+            <button class="odds-btn draw">DRAW<br>3.0x</button>
+            <button class="odds-btn alt">AVAX<br>2.3x</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- YOUR TICKETS SIDEBAR -->
+    <div class="your-tickets">
+      <div class="tickets-title">
+        <span class="tickets-icon">🎫</span> YOUR TICKETS
+      </div>
+      <div class="tickets-empty">
+        No Active Tickets
+      </div>
+      <button class="place-ticket-btn">PLACE TICKET</button>
+    </div>
+  </div>
+
+  <!-- LIVE TICKER -->
+  <div class="live-ticker">
+    <div class="ticker-content">
+      LIVE: BTC +2.5% | ETH +3.5% | SOL +4% | AVAX +6% | BNB +5% | HYPE +10%
+    </div>
+  </div>
 
   <!-- THREE WAYS TO WIN -->
-  <section class="ways-section">
-    <div class="ways-title animate-scroll">3 ways to win</div>
-    <div class="ways-cols">
-      <div class="way-col" data-anim="way1">
-        <div class="way-icon">🎯</div>
+  <section class="three-ways">
+    <div class="three-ways-title">
+      THREE WAYS<br>TO WIN
+    </div>
+
+    <div class="three-ways-content">
+      <!-- Way 1 -->
+      <div class="way-col">
+        <div class="way-number">1.</div>
         <div class="way-title">PREDICT MATCHES</div>
         <div class="way-desc">
-          Pick which coin outperforms<br>in head-to-head battles.
+          Pick which coin outperforms in head-to-head battles
         </div>
       </div>
-      <div class="way-col" data-anim="way2">
-        <div class="way-icon">🧩</div>
+
+      <!-- Neon Logo Center -->
+      <div class="neon-logo-center">
+        <img src="logo.png" alt="PredArena Logo">
+      </div>
+
+      <!-- Way 2 -->
+      <div class="way-col">
+        <div class="way-number">2.</div>
         <div class="way-title">BUILD PARLAYS</div>
         <div class="way-desc">
-          Stack predictions<br>for multiplied returns.
+          Stack predictions for multiplied returns
         </div>
       </div>
-      <div class="way-col" data-anim="way3">
-        <div class="way-icon">⚡️</div>
+
+      <!-- Way 3 -->
+      <div class="way-col">
+        <div class="way-number">3.</div>
         <div class="way-title">JOIN YOUR TRIBE</div>
         <div class="way-desc">
-          SOL Degens vs BTC Maxis vs ETH Believers.
+          SOL Degens vs BTC Maxis vs ETH Believers
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOUNDING PREDATORS PROGRAM -->
-  <section class="founders-section animate-scroll" style="border-radius: 0 0 var(--radius) var(--radius);">
-    <div class="founders-title">FOUNDING PREDATORS PROGRAM</div>
-    <div class="founders-subtitle">
-      Early access. Exclusive perks. Build history with us.
+  <!-- JOIN WAITLIST SECTION -->
+  <section class="join-waitlist-section" id="waitlist">
+    <div class="back-arrow" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">&larr;</div>
+    
+    <div class="waitlist-neon-logo">
+     <img <img src="logo.png" alt="PredArena Logo">
+    </div>
+
+    <div class="waitlist-heading">BE FIRST IN THE ARENA</div>
+    <div class="waitlist-subtext">
+      Join the waitlist for early access. Exclusive perks. Build history with us.
+    </div>
+
+    <form id="waitlistForm">
+      <label class="email-label">Enter your email</label>
+      <input 
+        type="email" 
+        class="email-input" 
+        id="email" 
+        placeholder="your@email.com" 
+        required
+      />
+      <button type="submit" class="notify-btn">Notify me at launch!</button>
+      <div class="success-message" id="successMessage">
+        ✓ You're on the waitlist!
+      </div>
+    </form>
+
+    <div class="privacy-notice">
+      Your Canva profile name won't be shared. Never submit passwords.
+    </div>
+
+    <div class="waitlist-neon-stripes">
+      <div class="stripe yellow"></div>
+      <div class="stripe blue"></div>
+      <div class="stripe yellow"></div>
     </div>
   </section>
 
-  <!-- WAITLIST FORM -->
-  <section class="form-section" id="waitlist">
-    <div class="form-title">JOIN THE WAITLIST</div>
-    <form id="waitlistForm" autocomplete="off">
-      <input type="email" id="email" placeholder="Enter your email" required />
-      <button class="submit-btn" type="submit">Submit</button>
-      <div class="form-success" id="formSuccess" style="display:none;">
-        Thank you — you're on the waitlist!
-      </div>
-    </form>
-  </section>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-icons">
+      <div class="footer-icon">𝕏</div>
+      <div class="footer-icon">✈️</div>
+      <div class="footer-icon">✉️</div>
+      <div class="footer-icon">📄</div>
+    </div>
+    <div class="footer-text">
+      Powered by Arbitrum. Built by humans and AI. ©PREDA 💎 ©2026
+    </div>
+  </footer>
 
   <script>
-    // Smooth scroll to form
-    document.getElementById('scrollToWaitlist').onclick = function(e) {
+    // Scroll to waitlist on button click
+    document.getElementById('scrollToWaitlist').addEventListener('click', (e) => {
       e.preventDefault();
-      document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth', block: 'center' });
-    };
-    // Waitlist Form (static only)
-    document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+      const waitlistSection = document.getElementById('waitlist');
+      waitlistSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    // Waitlist form submission
+    document.getElementById('waitlistForm').addEventListener('submit', (e) => {
       e.preventDefault();
-      document.getElementById('formSuccess').style.display = 'block';
+      const email = document.getElementById('email').value;
+      const successMsg = document.getElementById('successMessage');
+      
+      // Show success message
+      successMsg.style.display = 'block';
+      
+      // Clear input
       document.getElementById('email').value = '';
+      
+      // Hide message after 5 seconds
       setTimeout(() => {
-        document.getElementById('formSuccess').style.display = 'none';
+        successMsg.style.display = 'none';
       }, 5500);
     });
 
-    // IntersectionObserver for scroll-in animation
-    function animateOnScroll(selector, className = 'in-view') {
-      const elems = document.querySelectorAll(selector);
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if(entry.isIntersecting) {
-              entry.target.classList.add(className);
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.09 });
-        elems.forEach(el => observer.observe(el));
-      } else { // Fallback
-        elems.forEach(el => el.classList.add(className));
-      }
-    }
-    window.addEventListener('DOMContentLoaded', () => {
-      // Fade-in anims for bet cards and way-cols
-      animateOnScroll('.markets-preview-title', 'in-view');
-      animateOnScroll('.bet-card', 'animated');
-      animateOnScroll('.ways-title', 'in-view');
-      animateOnScroll('.way-col', 'animated');
-      animateOnScroll('.founders-section', 'in-view');
+    // Tab switching
+    document.querySelectorAll('.market-tab').forEach(tab => {
+      tab.addEventListener('click', function() {
+        document.querySelectorAll('.market-tab').forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+      });
     });
-    // Initial fade-ins (hero)
-    document.querySelectorAll('[data-anim="fade"]').forEach((el, i) => {
-      setTimeout(() => {
-        el.classList.add('in-view');
-      }, 220 + i * 95);
+
+    // Place Ticket button
+    document.querySelector('.place-ticket-btn').addEventListener('click', () => {
+      alert('Ticket placement coming soon!');
     });
   </script>
+
 </body>
 </html>
