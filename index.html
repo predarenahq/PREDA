@@ -88,6 +88,888 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
+      background: transparent !important;
+      mix-blend-mode: screen;
+    }
+
+    .tagline-header {
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+      letter-spacing: 1.5px;
+      line-height: 1.2;
+      max-width: 180px;
+    }
+
+    .request-access-btn {
+      background: #fff;
+      color: #000;
+      padding: 14px 40px;
+      border-radius: 50px;
+      border: none;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 1px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+    }
+
+    .request-access-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+    }
+
+    /* --- MATCH DURATION --- */
+    .match-duration {
+      background: #fff;
+      color: #000;
+      padding: 14px 40px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 2px;
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    /* --- MAIN CONTAINER --- */
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 24px;
+      padding: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* --- LIVE MARKETS SECTION --- */
+    .live-markets {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 30px;
+      border: 1px solid #2a3f5f;
+    }
+
+    .market-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .market-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .market-subtitle {
+      font-size: 12px;
+      color: #999;
+      margin-top: 4px;
+    }
+
+    .market-tabs {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid #2a3f5f;
+      padding-bottom: 12px;
+    }
+
+    .market-tab {
+      font-size: 13px;
+      color: #999;
+      cursor: pointer;
+      padding: 8px 0;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s;
+      font-weight: 600;
+    }
+
+    .market-tab.active {
+      color: var(--cyan);
+      border-bottom-color: var(--cyan);
+    }
+
+    .market-tab:hover {
+      color: #fff;
+    }
+
+    .tickets-icon {
+      font-size: 20px;
+      color: var(--green);
+    }
+
+    .market-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .market-card {
+      background: #111820;
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid #2a3f5f;
+      position: relative;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .card-match {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .card-coins {
+      display: flex;
+      gap: 8px;
+      font-size: 24px;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .card-time {
+      font-size: 11px;
+      color: #666;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .chart-icon {
+      font-size: 18px;
+      color: #666;
+      cursor: pointer;
+    }
+
+    .odds-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .odds-btn {
+      background: #fff;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      min-width: 80px;
+    }
+
+    .odds-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    }
+
+    .odds-btn.draw {
+      background: #2a3f5f;
+      color: #fff;
+    }
+
+    .odds-btn.alt {
+      background: #8B5CF6;
+      color: #fff;
+    }
+
+    /* --- YOUR TICKETS SIDEBAR --- */
+    .your-tickets {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 24px;
+      border: 1px solid #2a3f5f;
+      height: fit-content;
+      position: sticky;
+      top: 100px;
+    }
+
+    .tickets-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tickets-empty {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .place-ticket-btn {
+      background: var(--green);
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-weight: 700;
+      font-size: 12px;
+      cursor: pointer;
+      width: 100%;
+      letter-spacing: 1px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .place-ticket-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 255, 0, 0.4);
+    }
+
+    /* --- LIVE TICKER --- */
+    .live-ticker {
+      background: #fff;
+      color: #000;
+      padding: 16px 40px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      animation: tickerPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes tickerPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+
+    .ticker-content {
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    /* --- THREE WAYS SECTION --- */
+    .three-ways {
+      background: linear-gradient(180deg, #000 0%, #0a2e0a 50%, #000 100%);
+      padding: 80px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .three-ways-title {
+      font-family: var(--font-display);
+      font-size: 56px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 4px;
+      margin-bottom: 60px;
+      text-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+    }
+
+    .three-ways-content {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .way-col {
+      text-align: center;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 255, 0, 0.2);
+      position: relative;
+      z-index: 1;
+    }
+
+    .way-number {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--yellow);
+      margin-bottom: 12px;
+      text-shadow: 0 0 20px rgba(255, 255, 0, 0.5);
+    }
+
+    .way-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+    }
+
+    .way-desc {
+      font-size: 14px;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    .neon-logo-center {
+      position: absolute;
+      width: 300px;
+      height: 360px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.15;
+      z-index: 0;
+      pointer-events: none;
+      filter: drop-shadow(0 0 40px rgba(0, 255, 0, 0.4)) drop-shadow(0 0 80px rgba(255, 215, 0, 0.3));
+    }
+
+    .neon-logo-center img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* --- JOIN WAITLIST SECTION --- */
+    .join-waitlist-section {
+      background: linear-gradient(180deg, #000 0%, #0a2e0a 30%, #000 100%);
+      padding: 80px 40px;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .back-arrow {
+      position: absolute;
+      left: 40px;
+      top: 40px;
+      font-size: 32px;
+      color: #fff;
+      cursor: pointer;
+      transition: transform 0.2s;
+      z-index: 10;
+    }
+
+    .back-arrow:hover {
+      transform: translateX(-5px);
+    }
+
+    .waitlist-neon-logo {
+      width: 220px;
+      height: 280px;
+      margin: 0 auto 40px;
+      filter: drop-shadow(0 0 40px rgba(0, 255, 0, 0.5)) drop-shadow(0 0 80px rgba(255, 215, 0, 0.4));
+    }
+
+    .waitlist-neon-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .waitlist-heading {
+      font-family: var(--font-display);
+      font-size: 52px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 4px;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+
+    .waitlist-subtext {
+      font-size: 16px;
+      color: #ccc;
+      margin-bottom: 40px;
+      max-width: 600px;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .email-label {
+      display: block;
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+      text-align: left;
+    }
+
+    .email-input {
+      width: 100%;
+      padding: 16px 20px;
+      border: 2px solid #333;
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      font-size: 16px;
+      margin-bottom: 20px;
+      font-family: var(--font-main);
+      transition: border-color 0.2s;
+    }
+
+    .email-input:focus {
+      outline: none;
+      border-color: var(--green);
+    }
+
+    .email-input::placeholder {
+      color: #666;
+    }
+
+    .notify-btn {
+      width: 100%;
+      background: #fff;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-transform: uppercase;
+    }
+
+    .notify-btn:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+    }
+
+    .success-message {
+      display: none;
+      margin-top: 20px;
+      padding: 16px;
+      background: rgba(0, 255, 0, 0.1);
+      border: 2px solid var(--green);
+      border-radius: 8px;
+      color: var(--green);
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .privacy-notice {
+      font-size: 13px;
+      color: #666;
+      margin-top: 20px;
+    }
+
+    /* --- FOOTER --- */
+    .footer {
+      background: var(--black);
+      padding: 40px 40px;
+      text-align: center;
+      border-top: 2px solid #333;
+    }
+
+    .footer-icons {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .footer-icon {
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .footer-icon:hover {
+      transform: scale(1.2);
+    }
+
+    .footer-text {
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 1024px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      .your-tickets {
+        position: relative;
+        top: 0;
+      }
+
+      .live-ticker {
+        padding: 12px 24px;
+        font-size: 10px;
+      }
+
+      .three-ways-title {
+        font-size: 36px;
+      }
+
+      .three-ways-content {
+        gap: 20px;
+      }
+
+      .neon-logo-center {
+        width: 200px;
+        height: 240px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 16px;
+        gap: 12px;
+      }
+
+      .header-left {
+        width: 100%;
+      }
+
+      .request-access-btn {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 13px;
+      }
+
+      .three-ways-title {
+        font-size: 28px;
+        letter-spacing: 2px;
+      }
+
+      .three-ways-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .way-col {
+        text-align: center;
+        max-width: 100%;
+      }
+
+      .neon-logo-center {
+        display: none;
+      }
+
+      .live-markets {
+        padding: 20px;
+      }
+
+      .market-title {
+        font-size: 18px;
+      }
+
+      .join-waitlist-section {
+        padding: 40px 20px;
+        min-height: auto;
+      }
+
+      .waitlist-heading {
+        font-size: 32px;
+      }
+
+      .waitlist-subtext {
+        font-size: 14px;
+      }
+
+      .email-label {
+        font-size: 18px;
+      }
+
+      .back-arrow {
+        left: 20px;
+        top: 20px;
+        font-size: 24px;
+      }
+
+      .waitlist-neon-logo {
+        width: 180px;
+        height: 230px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-left">
+      <div class="logo">
+        <img src="logo.png" alt="PredArena Logo">
+      </div>
+      <div class="tagline-header">
+        Parlay Your<br>Conviction.<br>Create The<br>Record.
+      </div>
+    </div>
+    <button class="request-access-btn" id="scrollToWaitlist">Request Access</button>
+  </header>
+
+  <!-- MATCH DURATION -->
+  <div class="match-duration">
+    MATCH DURATION: [5 MIN] [15 MIN] [1 HOUR] [4 HOUR] [1 DAY] [1 WEEK]
+  </div>
+
+  <!-- MAIN CONTAINER -->
+  <div class="container">
+    <!-- LIVE MARKETS -->
+    <div class="live-markets">
+      <div class="market-header">
+        <div>
+          <div class="market-title">Live Markets</div>
+          <div class="market-subtitle">Predict price performance and win.</div>
+        </div>
+        <div class="tickets-icon">🎫 TICKET SLIP</div>
+      </div>
+
+      <div class="market-tabs">
+        <div class="market-tab active">All</div>
+        <div class="market-tab">Major</div>
+        <div class="market-tab">Altcoins</div>
+        <div class="market-tab">Meme</div>
+      </div>
+
+      <div class="market-cards">
+        <!-- Bitcoin vs Ethereum -->
+        <div class="market-card">
+          <div class="card-header">
+            <div class="card-match">
+              <div class="card-coins">🟠 🔷</div>
+              <div>
+                <div class="card-title">Bitcoin vs Ethereum</div>
+                <div class="card-time">⏱ Ends in 02:34:12</div>
+              </div>
+            </div>
+            <div class="chart-icon">📈</div>
+          </div>
+          <div class="odds-buttons">
+            <button class="odds-btn">BTC<br>1.5x</button>
+            <button class="odds-btn draw">DRAW<br>3.0x</button>
+            <button class="odds-btn alt">ETH<br>2.3x</button>
+          </div>
+        </div>
+
+        <!-- Solana vs Avalanche -->
+        <div class="market-card">
+          <div class="card-header">
+            <div class="card-match">
+              <div class="card-coins">🟣 🔺</div>
+              <div>
+                <div class="card-title">Solana vs Avalanche</div>
+                <div class="card-time">⏱ Ends in 04:15:00</div>
+              </div>
+            </div>
+            <div class="chart-icon">📈</div>
+          </div>
+          <div class="odds-buttons">
+            <button class="odds-btn">SOL<br>1.5x</button>
+            <button class="odds-btn draw">DRAW<br>3.0x</button>
+            <button class="odds-btn alt">AVAX<br>2.3x</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- YOUR TICKETS SIDEBAR -->
+    <div class="your-tickets">
+      <div class="tickets-title">
+        <span class="tickets-icon">🎫</span>
+      </div>
+      <div class="tickets-empty">
+        No Active Tickets
+      </div>
+      <button class="place-ticket-btn">PLACE TICKET</button>
+    </div>
+  </div>
+
+  <!-- LIVE TICKER -->
+  <div class="live-ticker">
+    <div class="ticker-content">
+      LIVE: BTC +2.5% | ETH +3.5% | SOL +4% | AVAX +6% | BNB +5% | HYPE +10%
+    </div>
+  </div>
+
+  <!-- THREE WAYS TO WIN -->
+  <section class="three-ways">
+    <div class="three-ways-title">
+      THREE WAYS<br>TO WIN
+    </div>
+
+    <div class="three-ways-content">
+      <!-- Neon Logo Center (background) -->
+      <div class="neon-logo-center">
+        <img src="logo.png" alt="PredArena Logo">
+      </div>
+
+      <!-- Way 1 -->
+      <div class="way-col">
+        <div class="way-number">1.</div>
+        <div class="way-title">PREDICT MATCHES</div>
+        <div class="way-desc">
+          Pick which coin outperforms in head-to-head battles
+        </div>
+      </div>
+
+      <!-- Way 2 -->
+      <div class="way-col">
+        <div class="way-number">2.</div>
+        <div class="way-title">BUILD PARLAYS</div>
+        <div class="way-desc">
+          Stack predictions for multiplied returns
+        </div>
+      </div>
+
+      <!-- Way 3 -->
+      <div class="way-col">
+        <div class="way-number">3.</div>
+        <div class="way-title">JOIN YOUR TRIBE</div>
+        <div class="way-desc">
+          SOL Degens vs BTC Maxis vs ETH Believers
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOIN WAITLIST SECTION -->
+  <section class="join-waitlist-section" id="waitlist">
+    <div class="back-arrow" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">&larr;</div>
+    
+    <div class="waitlist-neon-logo">
+     <img src="logo.png" alt="PredArena Logo">
+    </div>
+
+    <div class="waitlist-heading">BE FIRST IN THE ARENA</div>
+    <div class="waitlist-subtext">
+      Join the waitlist for early access. Exclusive perks. Build history with us.
+    </div>
+
+    <form id="waitlistForm">
+      <label class="email-label">Enter your email</label>
+      <input 
+        type="email" 
+        class="email-input" 
+        id="email" 
+        placeholder="your@email.com" 
+        required
+      />
+      <button type="submit" class="notify-btn">Notify me at launch!</button>
+      <div class="success-message" id="successMessage">
+        ✓ You're on the waitlist!
+      </div>
+    </form>
+
+    <div class="privacy-notice">
+      Launch: Q3 2026 on Solana
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-icons">
+      <div class="footer-icon">𝕏</div>
+      <div class="footer-icon">✈️</div>
+      <div class="footer-icon">✉️</div>
+      <div class="footer-icon">📄</div>
+    </div>
+    <div class="footer-text">
+      Building on Solana. Built by humans and AI. GPREDA 💎 ©2026
+    </div>
+  </footer>
+
+  <script>
+    // Scroll to waitlist on button click
+    document.getElementById('scrollToWaitlist').addEventListener('click', (e) => {
+      e.preventDefault();
+      const waitlistSection = document.getElementById('waitlist');
+      waitlistSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    // Waitlist form submission
+    document.getElementById('waitlistForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const successMsg = document.getElementById('successMessage');
+      
+      // Show success message
+      successMsg.style.display = 'block';
+      
+      // Clear input
+      document.getElementById('email').value = '';
+      
+      // Hide message after 5 seconds
+      setTimeout(() => {
+        successMsg.style.display = 'none';
+      }, 5500);
+    });
+
+    // Tab switching
+    document.querySelectorAll('.market-tab').forEach(tab => {
+      tab.addEventListener('click', function() {
+        document.querySelectorAll('.market-tab').forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // Place Ticket button
+    document.querySelector('.place-ticket-btn').addEventListener('click', () => {
+      alert('Ticket placement coming soon!');
+    });
+  </script>
+
+</body>
+</html>
+      flex-wrap: wrap;
+      gap: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .logo {
+      width: 70px;
+      height: 90px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 50px rgba(0, 255, 0, 0.2)) drop-shadow(0 0 70px rgba(0, 102, 255, 0.2));
+      animation: logoPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes logoPulse {
+      0%, 100% { filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 50px rgba(0, 255, 0, 0.2)) drop-shadow(0 0 70px rgba(0, 102, 255, 0.2)); }
+      50% { filter: drop-shadow(0 0 50px rgba(255, 215, 0, 0.6)) drop-shadow(0 0 70px rgba(0, 255, 0, 0.4)) drop-shadow(0 0 90px rgba(0, 102, 255, 0.4)); }
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .tagline-header {
